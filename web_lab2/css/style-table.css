@@ -1,0 +1,166 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  background-color: #000; /* Background for gaps */
+}
+
+/* Table Layout Wrappers */
+.main-wrapper {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  background-color: #000;
+  /* Reset margin to avoid double gaps with container padding if any */
+  margin: 0; 
+}
+
+/* Block 1 - Left Sidebar */
+.block-1 {
+  display: table-cell;
+  width: 25%;
+  background-color: #ffe4c4;
+  vertical-align: top;
+  padding: 20px;
+}
+
+/* Right Content Area */
+.content-wrapper {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0;
+  background-color: #000; /* Gap color */
+}
+
+/* Block 2 - Header */
+.block-2 {
+  height: 100px;
+  background-color: #b0c4de;
+  text-align: right;
+  /* Vertical alignment simulation */
+  padding-top: 30px; /* Approx center */
+  padding-right: 50px;
+  margin-bottom: 2px; /* Gap */
+}
+
+/* Middle Section Table */
+.middle-wrapper {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  /* Remove margin to fit tightly */
+  margin: 0;
+}
+
+/* Center Column */
+.center-column {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0;
+  background-color: #000;
+}
+
+/* Block 3 - Top Content Bar */
+.block-3 {
+  height: 60px;
+  background-color: #f5f5dc;
+  text-align: center;
+  padding-top: 15px; /* Approx center */
+  margin-bottom: 2px; /* Gap */
+}
+
+/* Block 5 - Main Content */
+.block-5 {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%; /* Fill remaining height if possible */
+}
+
+/* Block 4 - Right Sidebar */
+.block-4 {
+  display: table-cell;
+  width: 33.333%;
+  background-color: #e8f0e4;
+  vertical-align: top;
+  padding: 20px;
+}
+
+/* Block 6 - Footer */
+.block-6 {
+  height: 80px;
+  background-color: #b0c4de;
+  padding-top: 25px;
+  padding-left: 50px;
+  margin-top: 2px;
+}
+
+/* Typography & Elements */
+h1, h2, h3 { margin-bottom: 10px; }
+ul, ol { margin-left: 20px; margin-bottom: 10px; }
+a { text-decoration: none; color: #0056b3; }
+a:hover { text-decoration: underline; }
+
+/* Navigation Menu */
+.nav-menu { list-style: none; padding: 0; margin: 0; }
+.nav-menu li { margin-bottom: 10px; }
+.nav-menu a {
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  color: #333;
+  font-weight: bold;
+}
+.nav-menu a:hover { background-color: rgba(255, 255, 255, 0.8); }
+
+/* Slogans */
+.header-slogan {
+  background-color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: inline-block; /* Needed for text-align to work on wrapper */
+}
+.footer-slogan {
+  background-color: #fff;
+  padding: 5px 15px;
+  border: 1px solid #000;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-wrapper, .middle-wrapper, .block-1, .content-wrapper, .center-column, .block-4 {
+    display: block;
+    width: 100%;
+  }
+  .block-2, .block-3, .block-6 {
+    height: auto;
+    padding: 20px;
+    text-align: left;
+  }
+  .header-slogan, .footer-slogan {
+    display: block;
+    text-align: center;
+  }
+}

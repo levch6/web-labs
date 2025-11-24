@@ -1,0 +1,198 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+/* Main Container - Flex Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  background-color: #000; /* Background for gaps */
+  gap: 2px;
+}
+
+/* Wrappers */
+.main-wrapper {
+  display: flex;
+  flex: 1; /* Takes remaining height above footer */
+  gap: 2px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Takes remaining width next to sidebar */
+  gap: 2px;
+}
+
+.middle-wrapper {
+  display: flex;
+  flex: 1; /* Takes remaining height below header */
+  gap: 2px;
+}
+
+.center-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Takes remaining width next to right sidebar */
+  gap: 2px;
+}
+
+/* Block Styles */
+.block {
+  padding: 20px;
+  background-color: #fff;
+  /* border: 1px solid #ccc; Removed to avoid double borders with gap */
+}
+
+/* Block 1 - Left Sidebar */
+.block-1 {
+  width: 25%;
+  background-color: #ffe4c4;
+  flex-shrink: 0;
+}
+
+/* Block 2 - Header */
+.block-2 {
+  height: 100px;
+  background-color: #b0c4de;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 50px;
+  position: relative;
+}
+
+/* Block 3 - Top Content Bar */
+.block-3 {
+  height: 60px;
+  background-color: #f5f5dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Block 4 - Right Sidebar */
+.block-4 {
+  width: 33.3333%; /* 25% of total / 75% of parent = 1/3 */
+  background-color: #e8f0e4;
+  flex-shrink: 0;
+}
+
+/* Block 5 - Main Content */
+.block-5 {
+  flex: 1;
+  background-color: #fff;
+}
+
+/* Block 6 - Footer */
+.block-6 {
+  height: 80px;
+  background-color: #b0c4de;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+}
+
+/* Typography & Elements */
+h1,
+h2,
+h3 {
+  margin-bottom: 10px;
+}
+ul,
+ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+a {
+  text-decoration: none;
+  color: #0056b3;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-menu li {
+  margin-bottom: 10px;
+}
+.nav-menu a {
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  color: #333;
+  font-weight: bold;
+}
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Slogans */
+.header-slogan {
+  background-color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.footer-slogan {
+  background-color: #fff;
+  padding: 5px 15px;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container,
+  .main-wrapper,
+  .content-wrapper,
+  .middle-wrapper,
+  .center-column {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .block-1,
+  .block-4 {
+    width: 100%;
+    height: auto;
+  }
+  .block-2,
+  .block-3,
+  .block-6 {
+    height: auto;
+    min-height: 60px;
+  }
+  /* Reorder for mobile if needed, but Flexbox source order prevails unless order property used */
+  /* Grid version had specific areas. Flexbox follows DOM order.
+     DOM: B1, B2, B3, B5, B4, B6.
+     Grid Mobile: B2, B1, B3, B5, B4, B6.
+     To match Grid mobile order, we can use 'order' property.
+  */
+  .block-2 {
+    order: -1;
+  } /* Move header to top */
+}
