@@ -46,7 +46,7 @@ body {
   display: table-cell;
   vertical-align: top;
   padding: 0;
-  background-color: #000; /* Gap color */
+  background-color: #000;
 }
 
 /* Block 2 - Header */
@@ -66,7 +66,6 @@ body {
   width: 100%;
   border-collapse: separate;
   border-spacing: 2px;
-  /* Remove margin to fit tightly */
   margin: 0;
 }
 
@@ -83,15 +82,15 @@ body {
   height: 60px;
   background-color: #f5f5dc;
   text-align: center;
-  padding-top: 15px; /* Approx center */
-  margin-bottom: 2px; /* Gap */
+  padding-top: 15px;
+  margin-bottom: 2px;
 }
 
 /* Block 5 - Main Content */
 .block-5 {
   background-color: #fff;
   padding: 20px;
-  height: 100%; /* Fill remaining height if possible */
+  height: 100%;
 }
 
 /* Block 4 - Right Sidebar */
@@ -138,7 +137,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid #000;
   font-size: 1.5em;
   font-weight: bold;
-  display: inline-block; /* Needed for text-align to work on wrapper */
+  display: inline-block;
 }
 .footer-slogan {
   background-color: #fff;

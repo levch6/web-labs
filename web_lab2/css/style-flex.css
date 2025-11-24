@@ -186,12 +186,6 @@ a:hover {
     height: auto;
     min-height: 60px;
   }
-  /* Reorder for mobile if needed, but Flexbox source order prevails unless order property used */
-  /* Grid version had specific areas. Flexbox follows DOM order.
-     DOM: B1, B2, B3, B5, B4, B6.
-     Grid Mobile: B2, B1, B3, B5, B4, B6.
-     To match Grid mobile order, we can use 'order' property.
-  */
   .block-2 {
     order: -1;
   } /* Move header to top */
