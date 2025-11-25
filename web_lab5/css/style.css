@@ -1,0 +1,240 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+/* Main Container*/
+.container {
+  display: grid;
+  grid-template-columns: 25% 1fr 25%;
+  grid-template-rows: 100px 60px 1fr 80px;
+  grid-template-areas:
+    "b1 b2 b2"
+    "b1 b3 b4"
+    "b1 b5 b4"
+    "b6 b6 b6";
+  gap: 2px;
+  border: 2px solid #000;
+  background-color: #000;
+  min-height: 80vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Block Styles */
+.block {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Block 1 - Left Sidebar */
+.block-1 {
+  grid-area: b1;
+  background-color: #ffe4c4;
+}
+
+/* Block 2 - Header */
+.block-2 {
+  grid-area: b2;
+  background-color: #b0c4de;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 50px;
+  position: relative;
+}
+
+/* Block 3 - Top Content Bar */
+.block-3 {
+  grid-area: b3;
+  background-color: #f5f5dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Block 4 - Right Sidebar */
+.block-4 {
+  grid-area: b4;
+  background-color: #e8f0e4;
+}
+
+/* Block 5 - Main Content */
+.block-5 {
+  grid-area: b5;
+  background-color: #fff;
+}
+
+/* Block 6 - Footer */
+.block-6 {
+  grid-area: b6;
+  background-color: #b0c4de;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+}
+
+/* Typography & Elements */
+h1,
+h2,
+h3 {
+  margin-bottom: 10px;
+}
+
+ul,
+ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation Menu in Block 1 */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin-bottom: 10px;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Header Slogan (X) */
+.header-slogan {
+  background-color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Footer Slogan (Y) */
+.footer-slogan {
+  background-color: #fff;
+  padding: 5px 15px;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "b2"
+      "b1"
+      "b3"
+      "b5"
+      "b4"
+      "b6";
+  }
+
+  .block {
+    min-height: auto;
+  }
+}
+
+/* JS Generated Forms */
+.js-form-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.js-form-container h4 {
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #b0c4de;
+  padding-bottom: 5px;
+}
+
+.min-max-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 10px;
+}
+
+.min-max-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.min-max-form button,
+.image-form button {
+  grid-column: 1 / -1;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.min-max-form button:hover,
+.image-form button:hover {
+  background-color: #004494;
+}
+
+.image-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.image-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.added-image {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.added-image:hover {
+  transform: scale(1.02);
+}
