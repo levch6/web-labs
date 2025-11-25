@@ -30,7 +30,7 @@
 ### 5. Image Gallery (Selection & LocalStorage)
 
 - **Behavior**:
-  - Select text in the Footer Slogan (Block Y, now likely in Block 2 due to swap, or Block 6 depending on swap logic - _Note: The swap moves innerHTML, but the class `.footer-slogan` moves with it. So select text in the block that contains "© 2025..."_).
+  - Select text in the Header Slogan (Block X, now in Block 2 due to swap. So select text in the block that contains "© 2025..."\_).
   - A form "Додати зображення" appears in Block 5.
   - **Add**: Enter a URL and click "Зберегти". Image appears in the Right Sidebar (Block 4).
   - **Clear**: Click "Видалити все" to remove images and clear storage.

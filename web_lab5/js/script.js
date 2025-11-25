@@ -93,7 +93,7 @@ function task4() {
     const allBlocks = document.querySelectorAll('.block');
     // Select only side blocks (Block 1 and Block 4) for the trigger
     const triggerBlocks = document.querySelectorAll('.block-1, .block-4');
-    let lastFocusTime = 0; // Debounce timestamp
+    let lastFocusTime = 0;
     
     const savedColor = localStorage.getItem('borderColor');
     if (savedColor) {
