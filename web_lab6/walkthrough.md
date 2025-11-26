@@ -1,6 +1,6 @@
 # Walkthrough - Web Lab 6: Tabs with PHP Backend & Full-Width Layout
 
-I have implemented the Frontend-Backend interaction for the Tabs component and switched to a Full-Width Fluid Layout with a modern Tabs UI.
+I have implemented the Frontend-Backend interaction for the Tabs component and switched to a Full-Width Fluid Layout with a clean Horizontal Scroll Tabs UI.
 
 ## Changes Overview
 
@@ -9,12 +9,13 @@ I have implemented the Frontend-Backend interaction for the Tabs component and s
 - **Full-Width**: Removed body padding and container max-width/margins.
 - **Fluid Grid**: Changed grid columns to `minmax(200px, 250px) 1fr minmax(200px, 250px)` to keep sidebars fixed-ish and content fluid.
 - **Full Height**: Set `min-height: 100vh` to fill the screen vertically.
+- **Scroll Fix**: Added `min-width: 0` to `.block-5` and `max-width: 100%` to `.tabs-container` to ensure the horizontal scrollbar stays within the tabs block and doesn't cause the whole page to scroll.
 
-### 2. Tabs UI Updates (`style.css` & `index2.html`)
+### 2. Tabs UI Updates (`style.css`)
 
-- **Smart Horizontal Scroll**: The tab headers container now scrolls horizontally if there are many tabs, without a visible scrollbar.
-- **Text Truncation**: Tab titles longer than ~200px are truncated with "..." to prevent layout breakage.
-- **Tooltips**: Hovering over a tab header shows the full title.
+- **Horizontal Scroll**: The tab headers container scrolls horizontally if there are many tabs.
+- **Clean Look**: Scrollbar is hidden for a sleek, Instagram-stories-like feel.
+- **No Truncation**: Tabs maintain their full width to show complete titles.
 
 ### 3. Backend (`server.php`)
 
@@ -62,4 +63,4 @@ I have implemented the Frontend-Backend interaction for the Tabs component and s
     - Open `http://localhost:8000/index2.html`.
     - Verify tabs appear and auto-update works.
     - **Test Scrolling**: Add many tabs (10+) via Admin and check if you can scroll horizontally in Client.
-    - **Test Truncation**: Add a tab with a very long title and check if it shows "..." and the full text on hover.
+    - **Verify Fix**: Ensure that when you have many tabs, the horizontal scrollbar appears _only_ on the tabs row, and the main page does not have a horizontal scrollbar.

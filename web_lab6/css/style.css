@@ -73,6 +73,7 @@ body {
 .block-5 {
   grid-area: b5;
   background-color: #fff;
+  min-width: 0; /* Crucial for Grid item to allow children to overflow */
 }
 
 /* Block 6 - Footer */
@@ -213,6 +214,7 @@ a:hover {
 /* Client Tabs Styles */
 .tabs-container {
   margin-top: 20px;
+  max-width: 100%; /* Ensure it respects parent width */
 }
 
 .tab-headers {
