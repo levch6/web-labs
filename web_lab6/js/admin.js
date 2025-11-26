@@ -5,7 +5,7 @@ const tabsList = document.getElementById('tabsList');
 const saveBtn = document.getElementById('saveBtn');
 
 // Load existing tabs on page load
-fetch('server.php')
+fetch('server/server.php')
     .then(response => response.json())
     .then(data => {
         if (Array.isArray(data)) {
@@ -39,7 +39,7 @@ function renderList() {
 }
 
 saveBtn.addEventListener('click', () => {
-    fetch('server.php', {
+    fetch('server/server.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ saveBtn.addEventListener('click', () => {
 
 document.getElementById('clearAllBtn').addEventListener('click', () => {
     if (confirm('Ви впевнені, що хочете видалити всі таби?')) {
-        fetch('server.php', {
+        fetch('server/server.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

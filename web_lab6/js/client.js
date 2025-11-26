@@ -2,7 +2,7 @@ const tabsContainer = document.getElementById('tabsContainer');
 let currentTabsData = [];
 
 function fetchTabs() {
-    fetch('server.php')
+    fetch('server/server.php')
         .then(response => response.json())
         .then(data => {
             // Simple check to avoid unnecessary re-renders if data hasn't changed
