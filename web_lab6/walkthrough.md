@@ -34,7 +34,8 @@ I have implemented the Frontend-Backend interaction for the Tabs component and s
 - Added a form to input "Tab Title" and "Tab Content".
 - Added a "Save to Server" button that sends the data to `server.php` via `fetch` (POST).
 - Includes a preview list of added tabs.
-- **Sync on Load**: The page now fetches existing tabs from the server when loaded, so you can see and append to the current list.
+- **Sync on Load**: The page now fetches existing tabs from the server when loaded.
+- **Delete All**: Added a red "Очистити всі дані" button to clear all tabs from the server (with confirmation).
 
 ### 6. Client Interface (`index2.html`)
 
@@ -67,7 +68,7 @@ I have implemented the Frontend-Backend interaction for the Tabs component and s
     - Enter a title and content for a tab.
     - Click "Додати Таб".
     - Click "Зберегти на сервер".
-    - Refresh the page and verify the tabs are still there.
+    - **Verify Delete**: Click "Очистити всі дані", confirm the dialog, and verify the list clears.
 
 4.  **Client Flow**:
     - Open `http://localhost:8000/index2.html`.

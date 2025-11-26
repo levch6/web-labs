@@ -56,3 +56,26 @@ saveBtn.addEventListener('click', () => {
         alert('Помилка при збереженні.');
     });
 });
+
+document.getElementById('clearAllBtn').addEventListener('click', () => {
+    if (confirm('Ви впевнені, що хочете видалити всі таби?')) {
+        fetch('server.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify([]) // Send empty array to clear data
+        })
+        .then(response => response.json())
+        .then(data => {
+            tabs = []; // Clear local array
+            renderList(); // Update UI
+            alert('Всі дані успішно видалено!');
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Помилка при видаленні.');
+        });
+    }
+});
