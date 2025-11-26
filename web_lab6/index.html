@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" congittent="width=device-width, initial-scale=1.0" />
+    <title>Лабораторна робота</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Block 1: Navigation -->
+      <div class="block block-1">
+        <h3>Меню</h3>
+        <ul class="nav-menu">
+          <li><a href="index.html">Головна (Адмін)</a></li>
+          <li><a href="index2.html">Клієнт</a></li>
+          <li><a href="about.html">Про нас</a></li>
+          <li><a href="gallery.html">Галерея</a></li>
+          <li><a href="services.html">Послуги</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+        <p>Тут ви знайдете всю необхідну інформацію про наші подорожі.</p>
+      </div>
+
+      <!-- Block 2: Header (X) -->
+      <div class="block block-2">
+        <div class="header-slogan">Світ Подорожей</div>
+      </div>
+
+      <!-- Block 3: Top Info -->
+      <div class="block block-3">
+        <p>Актуальні новини</p>
+      </div>
+
+      <!-- Block 4: Right Sidebar -->
+      <div class="block block-4">
+        <h4>Корисне</h4>
+        <ol>
+          <li><a href="https://www.google.com" target="_blank">Пошук</a></li>
+          <li>
+            <a href="https://www.wikipedia.org" target="_blank">Вікіпедія</a>
+          </li>
+          <li><a href="https://www.booking.com" target="_blank">Готелі</a></li>
+        </ol>
+        <p>Плануйте свій відпочинок заздалегідь!</p>
+      </div>
+
+      <!-- Block 5: Main Content -->
+      <div class="block block-5">
+        <h2>Адмін-панель: Управління Табами</h2>
+        
+        <div class="admin-form">
+            <input type="text" id="tabTitle" placeholder="Заголовок табу" />
+            <textarea id="tabContent" placeholder="Вміст табу" rows="4"></textarea>
+            <button id="addTabBtn">Додати Таб</button>
+        </div>
+
+        <div class="tabs-preview">
+            <h3>Попередній перегляд:</h3>
+            <ul id="tabsList"></ul>
+        </div>
+
+        <button id="saveBtn" class="save-btn">Зберегти на сервер</button>
+
+        <script>
+            const tabs = [];
+            const titleInput = document.getElementById('tabTitle');
+            const contentInput = document.getElementById('tabContent');
+            const tabsList = document.getElementById('tabsList');
+            const saveBtn = document.getElementById('saveBtn');
+
+            document.getElementById('addTabBtn').addEventListener('click', () => {
+                const title = titleInput.value.trim();
+                const content = contentInput.value.trim();
+
+                if (title && content) {
+                    tabs.push({ title, content });
+                    renderList();
+                    titleInput.value = '';
+                    contentInput.value = '';
+                } else {
+                    alert('Будь ласка, заповніть обидва поля.');
+                }
+            });
+
+            function renderList() {
+                tabsList.innerHTML = '';
+                tabs.forEach((tab, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${tab.title} - ${tab.content.substring(0, 30)}...`;
+                    tabsList.appendChild(li);
+                });
+            }
+
+            saveBtn.addEventListener('click', () => {
+                fetch('server.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(tabs)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Дані успішно збережено!');
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Помилка при збереженні.');
+                });
+            });
+        </script>
+      </div>
+
+      <!-- Block 6: Footer (Y) -->
+      <div class="block block-6">
+        <div class="footer-slogan">
+          © 2025 Всі права захищено. Відкривай світ з нами.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
