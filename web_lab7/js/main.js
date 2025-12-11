@@ -1,8 +1,3 @@
-/**
- * main.js - Logic for Web Lab 7 Variant 12
- */
-
-// Configuration
 const CONFIG = {
   serverLogInterval: 10, // Log to server every N frames
   radius1: 10,
@@ -40,7 +35,16 @@ const elements = {
 // Logger
 const Logger = {
   log: function (event) {
-    const timestamp = new Date().toISOString();
+    const now = new Date();
+    // Форматуємо вручну: YYYY-MM-DD HH:MM:SS.ms
+    const timestamp = now.getFullYear() + '-' +
+        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+        String(now.getDate()).padStart(2, '0') + ' ' +
+        String(now.getHours()).padStart(2, '0') + ':' +
+        String(now.getMinutes()).padStart(2, '0') + ':' +
+        String(now.getSeconds()).padStart(2, '0') + '.' +
+        String(now.getMilliseconds()).padStart(3, '0');
+
     const logData = {
       id: state.logs.length + 1,
       event: event,
@@ -268,14 +272,7 @@ async function renderComparisonTable() {
   const tbody = elements.comparisonTableBody;
   tbody.innerHTML = "";
 
-  // Merge logs strategy: We can assume sequential ID if implementation is consistent,
-  // but typically we just iterate local logs and try to find matching server log if available.
-  // Given the requirement is to compare, let's list all events.
-  // However, server logs are incomplete (throttled). So we should probably list Local logs and match Server ones.
-
   localLogs.forEach((localLog) => {
-    // Find corresponding server log (assuming loosely based on close timestamps or order?
-    // Ideally we'd send a unique ID from client to server. I added 'id' to logData, so we can match by ID!)
     const serverLog = serverLogs.find((sl) => sl.id === localLog.id);
 
     const tr = document.createElement("tr");

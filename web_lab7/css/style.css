@@ -10,24 +10,25 @@ body {
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
-  padding: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 /* Main Container - Grid Layout Option 16 */
 .container {
   display: grid;
-  grid-template-columns: 25% 1fr 25%;
+  grid-template-columns: 20% 1fr 20%;
   grid-template-rows: 100px 60px 1fr 80px;
   grid-template-areas:
     "b1 b2 b2"
     "b1 b3 b4"
     "b1 b5 b4"
     "b6 b6 b6";
-  gap: 2px;
-  border: 2px solid #000;
+  gap: 0;
+  border: none;
   background-color: #000;
-  min-height: 80vh;
-  max-width: 1200px;
+  min-height: 100vh;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -203,4 +204,25 @@ a:hover {
   padding: 4px;
   text-align: left;
   white-space: nowrap;
+}
+
+/* Play Button Styles */
+#play-btn {
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+#play-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(67, 233, 123, 0.6);
 }

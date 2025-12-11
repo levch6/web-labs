@@ -1,6 +1,4 @@
 <?php
-// api/get_logs.php
-
 header('Content-Type: application/json');
 
 $file = '../data/logs.json';

@@ -1,9 +1,11 @@
 <?php
 // api/logger.php
 
+date_default_timezone_set('Europe/Kyiv');
+
 header('Content-Type: application/json');
 
-// Ensure data directory exists (redundant if folder structure is static, but good practice)
+// Ensure data directory exists
 if (!is_dir('../data')) {
     mkdir('../data', 0777, true);
 }
