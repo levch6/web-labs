@@ -198,12 +198,42 @@ a:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Table Container */
+#comparison-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
 /* Table Styles */
-#comparison-table th,
+#comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px; /* Compact font for sidebar */
+  background-color: #fff;
+}
+
+#comparison-table th {
+  background-color: #333;
+  color: #fff;
+  padding: 6px 4px;
+  text-align: left;
+  font-weight: bold;
+}
+
 #comparison-table td {
   padding: 4px;
+  border: 1px solid #ddd;
   text-align: left;
   white-space: nowrap;
+}
+
+/* Zebra Striping */
+#comparison-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#comparison-table tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
 /* Play Button Styles */
@@ -225,4 +255,27 @@ a:hover {
 #play-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(67, 233, 123, 0.6);
+}
+
+/* Clear Logs Button Styles */
+#clear-logs-btn {
+  background: #ff4d4d;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  padding: 8px 20px;
+  margin-left: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#clear-logs-btn:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(255, 77, 77, 0.4);
 }

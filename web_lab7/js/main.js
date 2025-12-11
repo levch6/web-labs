@@ -25,6 +25,7 @@ const elements = {
   stopBtn: document.getElementById("stop-btn"),
   reloadBtn: document.getElementById("reload-btn"),
   closeBtn: document.getElementById("close-btn"),
+  clearBtn: document.getElementById("clear-logs-btn"),
   statusText: document.getElementById("status-text"),
   comparisonContainer: document.getElementById("comparison-container"),
   comparisonTableBody: document.querySelector("#comparison-table tbody"),
@@ -36,7 +37,6 @@ const elements = {
 const Logger = {
   log: function (event) {
     const now = new Date();
-    // Форматуємо вручну: YYYY-MM-DD HH:MM:SS.ms
     const timestamp = now.getFullYear() + '-' +
         String(now.getMonth() + 1).padStart(2, '0') + '-' +
         String(now.getDate()).padStart(2, '0') + ' ' +
@@ -51,11 +51,11 @@ const Logger = {
       client_timestamp: timestamp,
     };
 
-    // 1. LocalStorage Logging
+    // LocalStorage Logging
     state.logs.push(logData);
     localStorage.setItem("animLogs", JSON.stringify(state.logs));
 
-    // 2. Server Logging (Throttled or Important Events)
+    // Server Logging (Throttled or Important Events)
     // Log button clicks and collision immediately. Log frames only every Nth time.
     const isFrameLog = event === "frame_update";
     const shouldLogToServer =
@@ -70,9 +70,16 @@ const Logger = {
     }
   },
 
-  clear: function () {
+  clear: async function () {
     state.logs = [];
     localStorage.removeItem("animLogs");
+    
+    // Clear server logs
+    try {
+        await fetch('api/clear_logs.php', { method: 'POST' });
+    } catch (e) {
+        console.error('Failed to clear server logs', e);
+    }
   },
 
   fetchServerLogs: async function () {
@@ -244,6 +251,17 @@ function reloadAnimation() {
 }
 
 // Event Listeners
+// Check for existing logs on load to show Clear button
+window.addEventListener('load', () => {
+    const savedLogs = JSON.parse(localStorage.getItem('animLogs') || '[]');
+    if (savedLogs.length > 0) {
+        state.logs = savedLogs;
+        elements.clearBtn.style.display = 'inline-block';
+    } else {
+        elements.clearBtn.style.display = 'none';
+    }
+});
+
 elements.playBtn.addEventListener("click", () => {
   elements.mainText.style.display = "none";
   elements.workArea.style.display = "block";
@@ -262,12 +280,26 @@ elements.closeBtn.addEventListener("click", async () => {
 
   // Show Comparison
   elements.comparisonContainer.style.display = "block";
+  elements.clearBtn.style.display = 'inline-block'; // Show clear button when logs are populated
   await renderComparisonTable();
+});
+
+elements.clearBtn.addEventListener('click', async () => {
+    if (confirm('Are you sure you want to clear all logs? This cannot be undone.')) {
+        await Logger.clear();
+        elements.comparisonTableBody.innerHTML = '';
+        elements.clearBtn.style.display = 'none';
+        elements.comparisonContainer.style.display = 'none';
+        alert('Logs cleared!');
+    }
 });
 
 async function renderComparisonTable() {
   const serverLogs = await Logger.fetchServerLogs();
   const localLogs = JSON.parse(localStorage.getItem("animLogs") || "[]");
+  
+  // Reverse Order (Newest First)
+  localLogs.reverse();
 
   const tbody = elements.comparisonTableBody;
   tbody.innerHTML = "";
